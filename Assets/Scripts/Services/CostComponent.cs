@@ -10,7 +10,9 @@ public class CostComponent : ScriptableObjectComponent
     {
         if (!world.GetPool<Client.CostComponent>().Has(entity))
         {
-            world.GetPool<Client.CostComponent>().Add(entity).Cost = Cost;
+            ref var costComp = ref world.GetPool<Client.CostComponent>().Add(entity);
+            costComp.CostBase = Cost;
+            costComp.Cost = Cost;
         }
     }
 }
@@ -19,6 +21,12 @@ namespace Client
 {
     public struct CostComponent
     {
+        public int CostBase;
         public int Cost;
+
+        public void RecalculateCost(int level)
+        {
+            Cost = (level + 1) * CostBase;
+        }
     }
 }

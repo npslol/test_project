@@ -11,7 +11,9 @@ public class IncomeComponent : ScriptableObjectComponent
     {
         if (!world.GetPool<Client.IncomeComponent>().Has(entity))
         {
-            world.GetPool<Client.IncomeComponent>().Add(entity).BaseIncome = Value;
+            ref var incomeComp = ref world.GetPool<Client.IncomeComponent>().Add(entity);
+            incomeComp.BaseIncome = Value;
+            incomeComp.Modifiers = new();
         }
     }
 }
@@ -25,8 +27,6 @@ namespace Client
         public List<float> Modifiers;    
 
         public int Income; // Рассчитанный доход
-
-        // Функция для пересчета дохода по формуле
 
         public void AddModifier(float value)
         {
@@ -46,7 +46,6 @@ namespace Client
 
             Income = Mathf.FloorToInt(Level * BaseIncome * totalMultiplier);
 
-            // Выводим результат для отладки (не обязательно)
             Debug.Log("Recalculated Income: " + Income);
         }
 

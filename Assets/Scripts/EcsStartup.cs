@@ -1,4 +1,5 @@
 using Leopotam.EcsLite;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 namespace Client 
@@ -23,9 +24,8 @@ namespace Client
                 .Add(new InitInterfaceSystem())
 
                 .Add(new RunDelayIncomeSystem())
-
                 .Add(new RunIncomeUpgradeSystem())
-
+                .Add(new RunLevelUpSystem())
                 .Add(new RunAddIncomeSystem())
 
 
@@ -55,6 +55,10 @@ namespace Client
                 _world.Destroy ();
                 _world = null;
             }
+        }
+        void OnApplicationQuit()
+        {
+            SaveManager.SaveGame(_world);  // Сохраняем ECS мир при выходе из игры
         }
     }
 }

@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 997e6ac4a70805942ad371d5037f4d6f, type: 3}
   m_Name: EntitiesConfig
   m_EditorClassIdentifier: 
-  Entities: []
+  Entities:
+  - {fileID: 11400000, guid: 6cbe05326161ebf46997e00424c15a86, type: 2}
+  - {fileID: 11400000, guid: c77b07351afa1bb4b9787d41dffbd1a0, type: 2}
+  - {fileID: 11400000, guid: 2f0e3efe60893494db8502a670b34e0b, type: 2}
+  - {fileID: 11400000, guid: bc232c48000205d43b4bf89f91b9c0f7, type: 2}
+  - {fileID: 11400000, guid: e894ba17be47cd14bbb3c51ee2b6e6fd, type: 2}

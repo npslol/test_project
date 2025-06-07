@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27dec9d13b2efdd45a7a929b613d9037, type: 3}
+  m_Name: BuisnessFifth
+  m_EditorClassIdentifier: 
+  Components:
+  - {fileID: 11400000, guid: deb38ead7f712874db0bc2cd29987e42, type: 2}
+  - {fileID: 11400000, guid: fff22b3e50c9e574892d3a8a36dcb456, type: 2}
+  - {fileID: 11400000, guid: d7f48b8f940888942b825fc0ad82ba10, type: 2}
+  - {fileID: 11400000, guid: 1d3f2e63b76d10d4983c4d0bf807a08d, type: 2}
+  - {fileID: 11400000, guid: 36db6ab636d970d44a4b4d353749d04d, type: 2}
+  - {fileID: 11400000, guid: 340c10a63b0b28b499ea4d68b1ce950a, type: 2}
+  - {fileID: 11400000, guid: 2ed9a7bf44d8572469c18bddc6936ed2, type: 2}

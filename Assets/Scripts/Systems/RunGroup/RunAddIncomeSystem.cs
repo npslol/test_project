@@ -2,6 +2,9 @@ using Leopotam.EcsLite;
 
 namespace Client
 {
+    /// <summary>
+    /// income generation system
+    /// </summary>
     sealed class RunAddIncomeSystem : IEcsRunSystem, IEcsInitSystem
     {
         EcsWorld _world;
@@ -29,8 +32,7 @@ namespace Client
 
                 foreach (var playerEntity in _playerFilter)
                 {
-                    ref var balanceComp = ref _balancePool.Get(playerEntity);
-                    balanceComp.Value += incomeComp.Income;
+                    _balancePool.Get(playerEntity).Add(incomeComp.Income);
                 }
 
                 _incomeAddPool.Del(entity);

@@ -12,6 +12,7 @@ namespace Client
 
             world.GetPool<PlayerComponent>().Add(entity);
             world.GetPool<BalanceComponent>().Add(entity);
+
         }
     }
 }

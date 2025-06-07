@@ -19,6 +19,9 @@ public class UpgradeComponent : ScriptableObjectComponent
         {
             component.AddComponent(world, newEnity);
         }
+
+        ref var buisnessComp = ref world.GetPool<Client.BuisnessComponent>().Get(entity);
+        buisnessComp.UpgradesEntity.Add(newEnity);
     }
 }
 

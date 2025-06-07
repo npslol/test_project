@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Client 
 {
+    /// <summary>
+    /// income generation system after the end of the delay
+    /// </summary>
     sealed class RunDelayIncomeSystem : IEcsRunSystem, IEcsInitSystem
     {
         EcsWorld _world;
@@ -13,7 +16,7 @@ namespace Client
         public void Init(IEcsSystems systems)
         {
             _world = systems.GetWorld();
-            _filter = _world.Filter<DelayIncomeComponent>().End();
+            _filter = _world.Filter<DelayIncomeComponent>().Exc<LockComponent>().End();
             _delayPool = _world.GetPool<DelayIncomeComponent>();
             _incomeAddPool = _world.GetPool<AddIncomeEvent>();
         }
@@ -23,7 +26,10 @@ namespace Client
             foreach (var entity in _filter)
             {
                 ref var delayComp = ref _delayPool.Get(entity);
+
                 delayComp.CurrentDelay -= Time.deltaTime;
+
+                PlayerObserver.DelayUpdate(entity, 1 - delayComp.CurrentDelay / delayComp.Delay);
 
                 if (delayComp.CurrentDelay <= 0)
                 {

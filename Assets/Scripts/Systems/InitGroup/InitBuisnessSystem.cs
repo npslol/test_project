@@ -1,4 +1,5 @@
 using Leopotam.EcsLite;
+using System.IO;
 
 namespace Client 
 {
@@ -10,12 +11,20 @@ namespace Client
 
             var entitiesConfig = ConfigModule.GetConfig<EntitiesConfig>();
 
-            foreach (var baseEntity in entitiesConfig.Entities)
+            for (int i = 0; i < entitiesConfig.Entities.Count; i++)
             {
                 var entity = world.NewEntity();
 
-                baseEntity.InitEntity(world, entity);
+                entitiesConfig.Entities[i].InitEntity(world, entity);
+                if (i == 0 && !File.Exists(SaveManager.SaveFilePath))
+                {
+                    world.GetPool<InitFirstBusinessEvent>().Add(entity);
+                    world.GetPool<AddLevelUpEvent>().Add(entity);
+                }
+                else
+                    world.GetPool<Client.LockComponent>().Add(entity);
             }
+            SaveManager.LoadGame(world);
         }
     }
 }
